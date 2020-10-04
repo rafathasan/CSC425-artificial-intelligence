@@ -1,0 +1,136 @@
+\documentclass[10pt]{article}
+\usepackage{blindtext}
+% \usepackage[showframe]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{fancyhdr}
+\pagenumbering{gobble}
+
+\pagestyle{fancy}
+
+\headheight=12pt
+
+\lhead{Rafat Hasan}
+\rhead{Programming Assignment 2}
+\thispagestyle{fancy}
+
+
+\begin{document}
+
+
+\section{Least Square Regression Problem}
+    $h_{\theta}(x) = \theta^Tx$ 
+\subsection{Batch Gradient Decent}
+cost function:
+    $\frac{1}{2m} \sum_{i=0}^{m-1}(h_{\theta}(X^{i}) - y^{i})^{2}$
+    \\\\
+Update Rule: m = 600\\
+    $for~j=0....7:\\
+    ~~~ \theta_{j} := \theta_{j} - \alpha \frac{1}{m} \sum_{i=0}^{m-1} (h_{\theta}(X^{i}) - y^{i}) X^{i}_{j}$
+    
+\subsubsection{Result Plot}
+epochs = 100, $\alpha = 0.0001$\\
+
+\includegraphics[scale=.6]{mse_batch}
+
+\subsection{Stochastic Gradient Decent}
+cost function:
+    $ \frac{1}{2}(h_{\theta}(X^{i}) - y^{i})^{2}$
+    \\\\
+Update Rule: m = 600\\
+    $ for~i=0....599:\\
+    ~~~for~j=0....7:\\
+    ~~~~~~\theta_{j} := \theta_{j} - \alpha (h_{\theta}(X^{i}) - y^{i}) X^{i}_{j}$
+    
+\newpage
+\subsubsection{Result Plot}
+epochs = 100, $\alpha = 0.00001$\\
+
+\includegraphics[scale=.6]{mse_stoch}
+
+
+\subsection{Mini Batch Gradient Decent}
+cost function:
+    $\frac{1}{k} \sum_{i=0}^{k-1} (h_{\theta}(X^{k}) - y^{k})^{2}$
+    \\\\
+Update Rule: k = 10, m = 600\\
+    $ for~i=0..9..19....599:\\
+    ~~~for~j=0....7:\\
+    ~~~~~~\theta_{j} := \theta_{j} - \alpha \frac{1}{b} \sum_{k=i}^{(i+k)-1}(h_{\theta}(X^{k}) - y^{k}) X^{k}_{j}$
+
+\subsubsection{Result Plot}
+epochs = 100, $\alpha = 0.00001$, b  = 10\\
+
+\includegraphics[scale=.6]{mse_mini}
+
+
+\subsection{BGD vs SGD vs MBGD}
+
+\includegraphics[scale=.8]{mse}
+
+\newpage
+
+
+
+
+
+\section{Classification Problem}
+    $h_{\theta}(x) = \frac{1}{1+e^{\theta^Tx}}$ 
+\subsection{Batch Gradient Decent}
+cost function:
+    $-\frac{1}{m} \sum_{i=0}^{m-1}(~y^{i}log(h_{\theta}(X^{i})) +  (1-y^{i})log(1-h_{\theta}(X^{i}))~)$
+    \\\\
+Update Rule: m = 600\\
+    $for~j=0....7:\\
+    ~~~ \theta_{j} := \theta_{j} - \alpha \frac{1}{m} \sum_{i=0}^{m-1} (h_{\theta}(X^{i}) - y^{i}) X^{i}_{j}$
+  
+\subsubsection{Accuracy}
+    0.806
+    
+\subsubsection{Result Plot}
+epochs = 1000, $\alpha = 0.0001$\\
+
+\includegraphics[scale=.6]{log_batch}
+
+
+\subsection{Stochastic Gradient Decent}
+cost function:
+    $ -(y^{i}log(h_{\theta}(X^{i})) +  (1-y^{i})log(1-h_{\theta}(X^{i})))$
+    \\\\
+Update Rule: m = 600\\
+    $ for~i=0....599:\\
+    ~~~for~j=0....7:\\
+    ~~~~~~\theta_{j} := \theta_{j} - \alpha (h_{\theta}(X^{i}) - y^{i}) X^{i}_{j}$
+    
+\subsubsection{Accuracy}
+    0.806
+    
+\subsubsection{Result Plot}
+epochs = 1000, $\alpha = 0.000001$\\
+
+\includegraphics[scale=.6]{log_stoch}
+
+
+\subsection{Mini Batch Gradient Decent}
+cost function:
+    $-\frac{1}{k} \sum_{i=0}^{k-1}(~y^{k}log(h_{\theta}(X^{k})) +  (1-y^{k})log(1-h_{\theta}(X^{k}))~)$
+    \\\\
+Update Rule: k = 10, m = 600\\
+    $ for~i=0..9..19....599:\\
+    ~~~for~j=0....7:\\
+    ~~~~~~\theta_{j} := \theta_{j} - \alpha \frac{1}{b} \sum_{k=i}^{(i+k)-1}(h_{\theta}(X^{k}) - y^{k}) X^{k}_{j}$
+
+\subsubsection{Accuracy}
+    0.806
+    
+\subsubsection{Result Plot}
+epochs = 1000, $\alpha = 0.000001$, b  = 10\\
+
+\includegraphics[scale=.6]{log_mini}
+
+
+\subsection{BGD vs SGD vs MBGD}
+
+\includegraphics[scale=.8]{log}
+
+\end{document}
