@@ -1,7 +1,7 @@
-Admission Prediction System
+# Admission Prediction System
 The Admission Prediction System is a project developed during my undergraduate studies to automate the evaluation of prospective students based on their profile scores. This repository contains the code and resources for the system, which leverages the power of neural networks to predict admission outcomes.
 
-Features
+## Features
 Utilizes a robust neural network model to evaluate prospective students' profiles.
 Handles data preprocessing tasks, including handling missing values, outliers, and normalization.
 Implements feature engineering techniques to extract relevant information from the profile data.
